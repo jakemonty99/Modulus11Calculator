@@ -1,0 +1,82 @@
+import java.util.Scanner;
+public class Modulus11 {
+
+	
+		
+		public static void main (String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please select the number of inputs you plan to use");
+		int input = sc.nextInt();
+		 
+		int [] list = new int [input];/* Enter 4 numbers*/
+		int sum = 0;
+		
+		
+		System.out.println("Please enter your numbers");
+		for(int i = 0; i < list.length;i++) {
+			int n = sc.nextInt();/*make the numbers 1,2,3,4*/
+			if (n > 9 || n < 0) {
+				System.out.println("Error number must be between 0 and 9!");
+			}
+			else {
+				
+				list[i] = n;
+				
+			}
+		}
+		System.out.println("Now to calculate Modulus 11 and check the final digit");
+		
+		
+		for(int i = 0; i < list.length;i++) {
+			
+			int step1 = list[i] * ((list.length + 1) - i);
+			 sum = sum + step1;
+		}
+		
+		
+		int remainder = sum / 11;
+		int modulus = 11 * remainder;
+		int digit = (sum - modulus);
+		int last = 11 - digit;
+		System.out.println("The digit to use is: " + last);/*answer will be 3*/
+		
+		System.out.println("Now to validate the digit");
+		list = new int [input + 1];
+		sum = 0;
+		remainder = 0;
+		modulus = 0;
+		digit = 0;
+		last = 0;
+		System.out.println("Please enter the same series of numbers with the check digitat the end");
+		for(int i = 0; i < list.length;i++) {
+			int n = sc.nextInt();/*make the numbers 1,2,3,4*/
+			if (n > 9 || n < 0) {
+				System.out.println("Error number must be between 0 and 9!");
+			}
+			else {
+				
+				list[i] = n;
+				
+			}
+		}
+		System.out.println("Now to calculate Modulus 11 and check the final digit");
+		for(int i = 0; i < list.length;i++) {
+			
+			int step1 = list[i] * ((list.length) - i);
+			 sum = sum + step1;
+		}
+		System.out.println("The sum of the numbers multiplied by there spot is: " + sum);
+		System.out.println("The remainder when dividing by 11 is: " + remainder);
+		if (remainder == 0) {
+			System.out.println("The checkDigit is VALID!");
+		}
+		else {
+			System.out.println("The checkDigit is INVALID!");
+		}
+	}
+}
+	
+	
+
+
